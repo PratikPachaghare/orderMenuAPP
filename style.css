@@ -1,0 +1,194 @@
+body{
+    /* overflow: scroll; */
+    background-color: rgb(241, 240, 238);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.uper{
+    padding: 10px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.uper .left h2{
+    
+    color: rgb(47, 47, 47);
+    margin-top: 0%;
+    margin-bottom: 0%;
+    font-size: 50px;
+}
+.uper .left p{
+    margin-top: 5px;
+    color: rgb(126, 126, 126);
+    font-size: 25px;
+}
+.uper img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+
+}
+
+.lower{
+    position: sticky;
+    width: 98vw;
+    height: 170px;
+}
+.serch{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 7px;
+}
+.lower .serchbar{
+    
+    width: 76vw;
+    height: 60px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: rgb(216, 215, 215);
+    color: rgb(143, 143, 143);
+    font-size: 20px;
+    text-align: center;
+}
+.lower img{
+    width: 65px;
+    height: 65px;
+}
+
+.menu-button{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.menu-button p{
+    background-color: rgb(255, 190, 149);
+    width: 90px;
+    height: 30px;
+    border-radius: 50px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+
+.container{
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 58vh;
+}
+.container .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 250px;
+    background-color: hsl(0, 6%, 93%);
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin: 10px;
+    margin-top: 30px;
+    position: relative;
+    transition: 0.5s;
+}
+.container .card:hover{
+    background-color: hsl(0, 10%, 88%);
+    width: 185px;
+    height: 275px;
+
+}
+.container .card img{
+    width: 150px;
+    height: 150px;
+    top: -35px;
+    right: 5px;
+    border-radius: 50%;
+    position: absolute;
+}
+.container .card .lower{
+    margin-top: 100px;
+    width: 150px;
+    
+}
+.container .card .nama{
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 30px;
+    font-weight: 300;
+    
+}
+.container .card .type{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 100;
+    color: rgb(105, 105, 105);
+}
+.container .card .price_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin: 10px;
+    font-size: 20px;
+}
+.container .card .add{
+    cursor: pointer;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    background-color: rgb(238, 152, 61);
+    color: #fff;
+    transition: background-color 0.3s ease;
+    border-style: none ;
+}
+.container .card button:active {
+    background-color: rgb(255, 135, 7);
+    width: 100px;
+    height: 45px;
+}
+
+ .bar{
+    position: relative;
+    z-index: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 70px;
+    background-color: #f1eeee;
+    border-top: 2px solid black;
+}
+
+.bar .basket{
+     position: absolute;
+     z-index: 2;
+     font-size: 40px;
+     bottom: 20px;
+     right: 170px;
+     border-radius: 50%;
+     width: 86px;
+     height: 80px;
+     color: #ffffff;
+     background-color: orange;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+.bar .icon{
+margin-top: 15px;
+    display: flex;
+    font-size: 35px;
+    justify-content: center;
+    align-items: center;
+    gap: 250px;
+    color: orange;
+}
+
+
