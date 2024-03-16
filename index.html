@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order MENU APP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <style>
-      
+        .total-section {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #totalItems, #totalIBill {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -32,92 +40,119 @@
         </div>
     </header>
     <section>
-        <div class="container">
-            <div class="card">
-                <div class="uper">
-                    <img src="./acceat/Food/pizza1.jpg" alt="">
-                </div>
-                <div class="lower">
-                    <p class="nama"> Pizza </p>
-                    <p class="type">veg tomato pizza</p>
-                    <div class="price_button">
-                        <p class="price">
-                            Rs.80
-                        </p>
-                        <button class="add">add+</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="uper">
-                    <img src="./acceat/Food/pizza1.jpg" alt="">
-                </div>
-                <div class="lower">
-                    <p class="nama"> Pizza </p>
-                    <p class="type">veg tomato pizza</p>
-                    <div class="price_button">
-                        <p class="price">
-                            Rs.80
-                        </p>
-                        <button class="add">add+</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="uper">
-                    <img src="./acceat/Food/pizza1.jpg" alt="">
-                </div>
-                <div class="lower">
-                    <p class="nama"> Pizza </p>
-                    <p class="type">veg tomato pizza</p>
-                    <div class="price_button">
-                        <p class="price">
-                            Rs.80
-                        </p>
-                        <button class="add">add+</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="uper">
-                    <img src="./acceat/Food/pizza1.jpg" alt="">
-                </div>
-                <div class="lower">
-                    <p class="nama"> Pizza </p>
-                    <p class="type">veg tomato pizza</p>
-                    <div class="price_button">
-                        <p class="price">
-                            Rs.80
-                        </p>
-                        <button class="add">add+</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="uper">
-                    <img src="./acceat/Food/pizza1.jpg" alt="">
-                </div>
-                <div class="lower">
-                    <p class="nama"> Pizza </p>
-                    <p class="type">veg tomato pizza</p>
-                    <div class="price_button">
-                        <p class="price">
-                            Rs.80
-                        </p>
-                        <button class="add">add+</button>
-                    </div>
-                </div>
-            </div>
+        <div class="container" id="cardContainer">
+            <!-- Cards will be dynamically added here -->
         </div>
+    </section>
+    <section class="total-section">
+        <p>Total Items: <span id="totalItems">0</span></p>
+        <p>Total Bill: <span id="totalIBill">Rs.0</span></p>
     </section>
     <footer>
         <div class="bar">
-            <div class="basket"><i class="fa-solid fa-cart-shopping"></i></div>
+            <a href="total.html"><div class="basket" onclick="updateTotal()"><i class="fa-solid fa-cart-shopping"></i></div></a>
             <div class="icon">
-                <i class="fas fa-home"></i> <!-- "fa-house" is replaced with "fas fa-home" -->
-                <i class="fas fa-user"></i> <!-- "fa-user" is replaced with "fas fa-user" -->
+                <i class="fas fa-home"></i>
+                <i class="fas fa-user"></i>
             </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function addItem(name, type, price, imageUrl) {
+            var cardContainer = document.getElementById("cardContainer");
+
+            var cardDiv = document.createElement("div");
+            cardDiv.className = "card";
+
+            var upperDiv = document.createElement("div");
+            upperDiv.className = "upper";
+
+            var image = document.createElement("img");
+            image.src = imageUrl;
+            image.alt = name;
+
+            upperDiv.appendChild(image);
+
+            var lowerDiv = document.createElement("div");
+            lowerDiv.className = "lower";
+
+            var nameParagraph = document.createElement("p");
+            nameParagraph.className = "nama";
+            nameParagraph.textContent = name;
+
+            var typeParagraph = document.createElement("p");
+            typeParagraph.className = "type";
+            typeParagraph.textContent = type;
+
+            var priceButtonDiv = document.createElement("div");
+            priceButtonDiv.className = "price_button";
+
+            var priceParagraph = document.createElement("p");
+            priceParagraph.className = "price";
+            priceParagraph.textContent = "Rs." + price;
+
+            var addButton = document.createElement("button");
+            addButton.className = "add";
+            addButton.textContent = "add+";
+            addButton.onclick = function () {
+                addItemToTotal(name, price);
+            };
+
+            priceButtonDiv.appendChild(priceParagraph);
+            priceButtonDiv.appendChild(addButton);
+
+            lowerDiv.appendChild(nameParagraph);
+            lowerDiv.appendChild(typeParagraph);
+            lowerDiv.appendChild(priceButtonDiv);
+
+            cardDiv.appendChild(upperDiv);
+            cardDiv.appendChild(lowerDiv);
+
+            cardContainer.appendChild(cardDiv);
+        }
+        var totalitem = 0;
+        var totalbill = 0;
+
+        function addItemToTotal(name, price) {
+            var totalItemsElement = document.getElementById("totalItems");
+            var totalItems = parseInt(totalItemsElement.textContent);
+
+            totalItems++;
+            totalitem++;
+            totalbill +=price;
+            totalItemsElement.textContent = totalItems;
+
+            // Update total bill
+            var totalBillElement = document.getElementById("totalIBill");
+            var totalBill = parseFloat(totalBillElement.textContent.replace('Rs.', '')) + price;
+            totalBillElement.textContent = "Rs." + totalBill.toFixed(2);
+        }
+        
+        let total = document.getElementById("totalIBill").innerText;
+        var dataToSend = "" + total;
+        localStorage.setItem("myData", JSON.stringify(dataToSend));
+
+        // Example of calling the addItem function with some data
+        addItem("Pizza", "veg tomato pizza", 80, "./acceat/Food/pizza1.jpg");
+        addItem("Pizza", "veg tomato pizza", 80, "./acceat/Food/pizza1.jpg");
+        addItem("Pizza", "veg fray pizza", 90, "./acceat/Food/pizzz2.jpg");
+        addItem("Pizza", "veg paneer pizzz", 60, "./acceat/Food/pizzz3.png");
+        addItem("Burger", "veg tomato Burger", 40, "./acceat/Food/burger1.jpg");
+        addItem("Pizza", "veg fray pizza", 90, "./acceat/Food/pizzz2.jpg");
+        addItem("Pizza", "veg panier pizzz", 60, "./acceat/Food/pizzz3.png");
+
+       
+        function basket() { 
+    var dataToSend = 1000; // Example data to send
+    
+    // Set data to localStorage
+    localStorage.setItem("myData", JSON.stringify(dataToSend));
+    // Redirect to the second web page
+    window.location.href = "total.html";
+}
+
+    </script>
 </body>
 </html>
